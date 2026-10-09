@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gonçalo Moreira Neves - CV</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Sofia+Sans+Extra+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){var t="light";try{t=localStorage.getItem("cv-theme")||"light";}catch(e){}document.documentElement.setAttribute("data-theme",t);})();
+</script>
+<style>
+  /* Canopy tokens (Gaussem-Neves palette). Light is the default; dark only via data-theme="dark". */
+  :root{
+    color-scheme:light;
+    --canvas:#FAF6F1; --surface:#FFFFFF; --inset:#F2EFE9; --sand:#F5DEC9; --sand-50:#F2EDE8;
+    --text:#1D1D1B; --text-2:#55524E; --text-3:#6E6B67;
+    --line:#E6E2DD; --line-2:#D1CDC8;
+    --ocean:#336699; --ocean-6:#15558F; --ocean-7:#00467D; --ocean-8:#043762; --ocean-1:#CDDCED;
+    --sun:#FC9B2C; --sun-3:#FEBC76; --sun-7:#8B5300;
+    --chip-bg:#F2EDE8; --chip-fg:#3A3733;
+    --win-bg:#FAF6F1;
+    --shadow:0 4px 12px rgba(29,29,27,.08),0 2px 4px rgba(29,29,27,.05);
+    --font:"Manrope",-apple-system,"Segoe UI",system-ui,sans-serif;
+    --brand:"Sofia Sans Extra Condensed","Manrope",sans-serif;
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --canvas:#0E0C09; --surface:#161310; --inset:#0E0C09; --sand:#342B22; --sand-50:#25221F;
+    --text:#EEEBE6; --text-2:#B3B1AC; --text-3:#8E8C87;
+    --line:#25221F; --line-2:#34312E;
+    --ocean:#71A1D3; --ocean-6:#9DBEE2; --ocean-7:#9DBEE2; --ocean-8:#082948; --ocean-1:#082948;
+    --sun:#FC9B2C; --sun-3:#FEBC76; --sun-7:#FEBC76;
+    --chip-bg:#25221F; --chip-fg:#D7D4CF;
+    --win-bg:#1B1916;
+    --shadow:0 4px 12px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html,body{background:var(--canvas)}
+  body{font-family:var(--font); font-weight:500; color:var(--text); line-height:1.5;
+       -webkit-font-smoothing:antialiased; font-variant-numeric:tabular-nums}
+  b{font-weight:700}
+  .page{max-width:1000px; margin:24px auto; background:var(--surface); box-shadow:var(--shadow);
+        border:1px solid var(--line); border-radius:16px; overflow:hidden}
+
+  /* ---------- Header (the one gradient hero surface) ---------- */
+  header{background:linear-gradient(135deg,#336699 0%,#043762 100%); color:#fff; padding:30px 36px 24px; position:relative}
+  header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
+                background:linear-gradient(90deg,var(--sun) 0 34%,var(--sun-3) 34% 58%,#FF6666 58% 78%,#00CCFF 78% 100%)}
+  .head-top{display:flex; align-items:flex-start; gap:18px}
+  .monogram{flex:none; width:56px; height:56px; border-radius:50%; border:2px solid var(--sun-3);
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--brand); font-weight:600; font-size:24px; letter-spacing:.08em; color:#FEBC76}
+  [hidden]{display:none !important}
+  .photo{flex:none; width:68px; height:68px; border-radius:50%; object-fit:cover; border:2px solid var(--sun-3); background:#043762}
+  .ctlrow{display:flex; gap:6px}
+  a.iconbtn{text-decoration:none}
+  .head-id{flex:1; min-width:0}
+  header h1{font-family:var(--brand); font-weight:600; font-size:44px; line-height:1; letter-spacing:.06em; text-transform:uppercase}
+  .tagline{margin-top:6px; font-size:15px; font-weight:600; color:#DCECFD}
+  .role{margin-top:14px; font-size:13px; font-weight:600; color:#FEE6CE}
+  .role .sep{color:var(--sun); margin:0 6px}
+  .contact{margin-top:12px; display:flex; flex-wrap:wrap; gap:6px 22px; font-size:12.5px}
+  .contact a{color:#fff; text-decoration:none; border-bottom:1px solid rgba(254,188,118,.7)}
+  .contact a:hover{border-bottom-color:#fff}
+  .contact span{color:#E6EEF7}
+  .contact i{font-style:normal; color:#FEBC76; font-weight:700; margin-right:6px}
+
+  /* ---------- Controls (top right) ---------- */
+  .controls{flex:none; display:flex; flex-direction:column; align-items:flex-end; gap:8px}
+  .ctlgroup{display:flex; gap:2px; background:rgba(255,255,255,.10); border:1px solid rgba(254,188,118,.55); border-radius:9999px; padding:3px}
+  .ctlgroup button,.iconbtn{font:inherit; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+       color:#FEE6CE; background:transparent; border:0; border-radius:9999px; padding:5px 11px; cursor:pointer;
+       transition:background 120ms cubic-bezier(.4,0,.2,1)}
+  .ctlgroup button:hover,.iconbtn:hover{background:rgba(255,255,255,.12)}
+  .ctlgroup button[aria-pressed="true"]{background:#FC9B2C; color:#1D1D1B}
+  .iconbtn{background:rgba(255,255,255,.10); border:1px solid rgba(254,188,118,.55); display:inline-flex; align-items:center; gap:6px; padding:6px 13px}
+  .iconbtn svg{width:13px; height:13px; fill:currentColor}
+  button:focus-visible{outline:2px solid #fff; outline-offset:2px}
+
+  /* ---------- Layout ---------- */
+  .body{display:grid; grid-template-columns:320px 1fr}
+  aside{background:var(--canvas); padding:24px 22px; border-right:1px solid var(--line)}
+  main{padding:24px 30px}
+  section{margin-bottom:22px}
+  h2{font-family:var(--brand); font-size:16px; line-height:1.1; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+     color:var(--ocean-7); margin:0 0 11px; padding-bottom:5px; border-bottom:2px solid var(--sun)}
+
+  /* ---------- Justified running text ---------- */
+  .summary p,.job .desc,.job li,.vent .vdesc{text-align:justify; text-justify:inter-word; hyphens:auto; -webkit-hyphens:auto}
+
+  .summary{font-size:13.5px; color:var(--text-2)}
+  .summary p{margin-bottom:9px}
+  .summary p:last-child{margin-bottom:0}
+  .summary b{color:var(--text)}
+
+  /* ---------- Key results ---------- */
+  .wins{display:grid; grid-template-columns:1fr; gap:7px}
+  .win{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:8px 11px}
+  .win b{display:block; color:var(--ocean-7); font-size:13px; font-weight:800; margin-bottom:1px}
+  .win span{display:block; font-size:11.5px; color:var(--text-3); line-height:1.4}
+
+  .pillar{margin-bottom:12px}
+  .pillar:last-child{margin-bottom:0}
+  .pillar h3{font-size:12px; font-weight:800; color:var(--ocean-7); margin-bottom:6px}
+  .pillar .wins{grid-template-columns:repeat(3,1fr)}
+  .inv{margin-bottom:9px; font-size:13px; color:var(--text-2)}
+  .inv:last-child{margin-bottom:0}
+  .inv b{display:block; color:var(--text); font-weight:800; font-size:13.5px}
+  .inv span{display:block; text-align:justify; hyphens:auto}
+  a.org{color:inherit; text-decoration:none; border-bottom:1px dotted var(--ocean)}
+  a.org:hover{color:var(--ocean-6)}
+  /* ---------- Experience ---------- */
+  .job{margin-bottom:16px}
+  .job:last-child{margin-bottom:0}
+  .job .top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:2px 12px; align-items:baseline}
+  .job .title{font-size:14.5px; font-weight:800; color:var(--text)}
+  .job .co{font-weight:700; color:var(--ocean-6)}
+  .job .meta{font-size:11.5px; color:var(--text-3); white-space:nowrap; font-weight:600}
+  .job .desc{font-size:12.5px; color:var(--text-3); font-style:italic; margin:3px 0 7px}
+  .job ul{list-style:none}
+  .job li{position:relative; padding-left:15px; font-size:13px; margin-bottom:4px; color:var(--text-2)}
+  .job li::before{content:""; position:absolute; left:2px; top:7.5px; width:5px; height:5px; background:var(--sun); border-radius:50%}
+  .job li b{color:var(--text)}
+
+  .vent{margin-top:8px; padding-left:14px; border-left:2px solid var(--sand)}
+  .vent .vrow{margin-bottom:8px}
+  .vent .vrow:last-child{margin-bottom:0}
+  .vent .vtitle{font-size:13px; font-weight:800; color:var(--text)}
+  .vent .vtitle .co2{color:var(--ocean-6)}
+  .vent .vmeta{font-size:11px; color:var(--text-3); font-weight:600; margin-left:6px; white-space:nowrap}
+  .vent .vdesc{font-size:12.5px; color:var(--text-2); margin-top:1px}
+  .vent .vdesc b{color:var(--text)}
+
+  /* ---------- Skills ---------- */
+  .skillgroup{margin-bottom:12px}
+  .skillgroup:last-child{margin-bottom:0}
+  .skillgroup h3{font-size:12px; color:var(--ocean-7); font-weight:800; margin-bottom:6px}
+  .chips{display:flex; flex-wrap:wrap; gap:5px}
+  .chips span{background:var(--chip-bg); color:var(--chip-fg); font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:6px; border:1px solid var(--line)}
+
+  /* ---------- Lists ---------- */
+  .edu{font-size:12.5px; margin-bottom:9px; color:var(--text-2)}
+  .edu b{display:block; color:var(--text)}
+  .edu span{display:block; color:var(--text-3); font-size:11.5px}
+  .pub{padding-left:14px; position:relative; font-size:12.5px; margin-bottom:9px; color:var(--text-2)}
+  .pub b{color:var(--text)}
+  .pub span{display:block; color:var(--text-3); font-size:11.5px; margin-top:1px}
+  .pub::before,ul.plain li::before{content:""; position:absolute; left:0; top:7px; width:5px; height:5px; background:var(--sun); border-radius:50%}
+  .lang{display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px; color:var(--text)}
+  .lang span{color:var(--text-3)}
+  ul.plain{list-style:none}
+  ul.plain li{position:relative; padding-left:14px; font-size:12.5px; margin-bottom:5px; color:var(--text-2)}
+  .tail{display:grid; grid-template-columns:1fr 1fr; gap:0 26px}
+  .print-grid{display:block}
+  .lastsec{margin-bottom:0}
+  .body > main{grid-column:2; grid-row:1}
+  .body > aside{grid-column:1; grid-row:1}
+  main .wins{grid-template-columns:repeat(3,1fr)}
+
+  footer{padding:12px 36px; background:var(--canvas); border-top:1px solid var(--line);
+         font-size:11px; color:var(--text-3); text-align:center}
+  footer .flinks{display:flex; flex-wrap:wrap; justify-content:center; gap:2px 0}
+  footer .flinks a{color:var(--ocean); text-decoration:none; font-weight:600}
+  footer .flinks a:hover{text-decoration:underline}
+  footer .fsep{color:var(--sun); padding:0 8px}
+  footer .fdate{margin-top:3px}
+
+  @media (max-width:860px){
+    .head-top{flex-wrap:wrap}
+    .controls{order:-1; width:100%; flex-direction:row; flex-wrap:wrap; justify-content:flex-end; align-items:center}
+  }
+  @media (max-width:760px){
+    .page{margin:0; border-radius:0; border:0}
+    .body{grid-template-columns:1fr}
+    .body > main,.body > aside{grid-column:1; grid-row:auto}
+    main .wins,.pillar .wins{grid-template-columns:1fr}
+    .tail{grid-template-columns:1fr}
+    aside{border-right:none; border-top:1px solid var(--line); order:2}
+    main{order:1}
+    header{padding:24px 16px 20px}
+    main,aside{padding:20px 16px}
+    header h1{font-size:34px}
+  }
+
+  /* ---------- Print: A4, normal margins, single flowing column, no gaps ---------- */
+  @page{size:A4; margin:20mm 20mm 20mm 20mm}
+  @media print{
+    :root,:root[data-theme="dark"]{
+      --canvas:#FAF6F1; --surface:#FFFFFF; --sand:#F5DEC9; --text:#1D1D1B; --text-2:#3A3733; --text-3:#55524E;
+      --line:#E6E2DD; --ocean:#336699; --ocean-6:#15558F; --ocean-7:#00467D; --chip-bg:#F2EDE8; --chip-fg:#3A3733; --win-bg:#FAF6F1;
+    }
+    *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+    html,body{background:#fff}
+    .page{box-shadow:none; margin:0; max-width:none; border:0; border-radius:0; overflow:visible}
+    .controls{display:none !important}
+    header{border-radius:12px; padding:20px 22px 18px; overflow:hidden}
+    header h1{font-size:38px}
+    .body{display:block}
+    main{padding:14px 0 0}
+    aside{padding:0; margin-top:18px; background:none; border:0}
+    section{margin-bottom:14px}
+    h2{break-after:avoid; page-break-after:avoid}
+    .summary{font-size:12.5px; line-height:1.5}
+    .job li{font-size:12px; margin-bottom:3px}
+    .job .desc{font-size:11.5px; margin:2px 0 5px}
+    .job{margin-bottom:12px}
+    .vent .vdesc{font-size:12px}
+    .chips span{font-size:10.5px; padding:2px 8px}
+    .win span{font-size:11px}
+    .wins.many{grid-template-columns:repeat(4,1fr)}
+    .pillar,.inv{break-inside:avoid; page-break-inside:avoid}
+    .inv{font-size:12px; margin-bottom:6px}
+    .inv b{font-size:12.5px}
+    a.org{border-bottom:0}
+    body{line-height:1.4}
+    .summary{line-height:1.45}
+    .summary p{margin-bottom:6px}
+    section{margin-bottom:11px}
+    .job .top,.job .desc{break-inside:avoid; page-break-inside:avoid}
+    .chips{gap:4px}
+    .skillgroup{margin-bottom:8px}
+    .edu,.pub{margin-bottom:6px}
+    ul.plain li{margin-bottom:3px}
+    .lang{margin-bottom:2px}
+    .win{padding:6px 9px}
+    .job{break-inside:auto}
+    .job .top,.job .desc{break-after:avoid; page-break-after:avoid}
+    .job li,.vent .vrow,.edu,.pub,.win,.skillgroup{break-inside:avoid; page-break-inside:avoid}
+    .wins{grid-template-columns:repeat(3,1fr); gap:6px}
+    .win{background:var(--win-bg)}
+    .print-grid{display:block; column-count:2; column-gap:24px; column-fill:balance}
+    .print-grid section{break-inside:auto}
+    .print-grid .lastsec{margin-bottom:16px}
+    .print-grid > div:last-child .lastsec{margin-bottom:0}
+    footer{background:none; border-top:1px solid var(--line); padding:8px 0 0; margin-top:4px; break-inside:avoid; page-break-inside:avoid}
+    footer .flinks a{color:var(--ocean-6)}
+    a{color:inherit}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="head-top">
+      <img class="photo" id="photo" alt="Gonçalo Moreira Neves" hidden>
+      <div class="monogram" id="mono" aria-hidden="true">GN</div>
+      <div class="head-id">
+        <h1>Gonçalo Moreira Neves</h1>
+        <div class="tagline" id="tagline"></div>
+      </div>
+      <div class="controls">
+        <div class="ctlgroup" id="langs" role="group" aria-label="Language"></div>
+        <div class="ctlrow">
+          <a class="iconbtn" id="atsDocx" download></a>
+          <a class="iconbtn" id="atsPdf" download></a>
+        </div>
+        <div class="ctlrow">
+          <button class="iconbtn" id="themeBtn" type="button"></button>
+          <button class="iconbtn" id="printBtn" type="button"></button>
+        </div>
+      </div>
+    </div>
+    <div class="role" id="roleline"></div>
+    <div class="contact" id="contact"></div>
+  </header>
+
+  <div class="body">
+    <main>
+      <section><h2 id="h-profile"></h2><div class="summary" id="profile"></div></section>
+      <section><h2 id="h-results"></h2><div id="wins"></div></section>
+      <section id="s-inv"><h2 id="h-inv"></h2><div id="inv"></div></section>
+      <section><h2 id="h-exp"></h2><div id="jobs"></div></section>
+    </main>
+    <aside>
+      <section><h2 id="h-caps"></h2><div id="skills"></div></section>
+      <div class="print-grid">
+        <div>
+          <section><h2 id="h-edu"></h2><div id="edu"></div></section>
+          <section id="s-certs" class="lastsec"><h2 id="h-certs"></h2><ul class="plain" id="certs"></ul></section>
+        </div>
+        <div>
+          <section id="s-pubs"><h2 id="h-pubs"></h2><div id="pubs"></div></section>
+          <section id="s-members"><h2 id="h-members"></h2><ul class="plain" id="members"></ul></section>
+          <section class="lastsec"><h2 id="h-langs"></h2><div id="langlist"></div></section>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+"use strict";
+const META = {
+  code: "ag",
+  links: {"Schneider Electric": "https://www.se.com", "Viscon Group": "https://viscongroup.eu", "Microsoft": "https://www.microsoft.com", "Wageningen University & Research": "https://www.wur.nl", "Photontek": "https://photontek-lighting.com", "Valoya": "https://www.valoya.com", "IGS": "https://www.intelligentgrowthsolutions.com", "Aalto University": "https://www.aalto.fi/en", "Universidade da Beira Interior": "https://www.ubi.pt", "Gladwell Academy": "https://www.gladwellacademy.com", "Flight Levels Academy": "https://www.flightlevels.io", "Burleigh Dodds Science Publishing": "https://www.bdspublishing.com", "International Society for Horticultural Science": "https://ishs.org", "Cofra": "https://www.cofraholding.com", "S2G Investments": "https://www.s2ginvestments.com", "AgFunder": "https://agfunder.com", "Sociedade Internacional de Ciência Hortícola": "https://ishs.org"},
+  photo: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/6xaJSlACEQAAAAEAABZ/anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFllqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjZjZTI2M2VjLTQ1NDktNDVkZi04ZmU5LWY1N2YzNTdhYjQ3ZQAAAAOUanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuWp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNoWBpN1T7Ut+/6+V2R9zW6nwAAAG1jYm9yo2lkYzpmb3JtYXRqaW1hZ2UvanBlZ2ppbnN0YW5jZUlEeCx4bXA6aWlkOmQ5ZWFlN2VhLWVlNmItNDQ0Yy04NjhmLTFlYzZjYzZmNjc2YWxyZWxhdGlvbnNoaXBocGFyZW50T2YAAAHianVtYgAAAEFqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmFjdGlvbnMudjIAAAAAGGMyc2gORPHUGdvtdiOzLIldUfrUAAABmWNib3KiZ2FjdGlvbnOComZhY3Rpb25rYzJwYS5vcGVuZWRqcGFyYW1ldGVyc6FraW5ncmVkaWVudHOBomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCC20E0lLCM2aYULTgFe0JEjc537Sio+Z1LFhBk2X2kXaKRmYWN0aW9ueB1jb20uYW50aHJvcGljLmNsYXVkZS5wcm92aWRlZGpwYXJhbWV0ZXJzoXgfY29tLmFudGhyb3BpYy5vcmlnaW4tY29uZmlkZW5jZWd1bmtub3dua2Rlc2NyaXB0aW9ueGZDbGF1ZGUgcHJvdmlkZWQgdGhpcyBmaWxlIGF0IHRoZSByZXF1ZXN0IG9mIGEgdXNlciBhbmQgbWF5IGhhdmUgY3JlYXRlZCBvciBtb2RpZmllZCB0aGUgZmlsZSBjb250ZW50cy5tc29mdHdhcmVBZ2VudKFkbmFtZWZDbGF1ZGVyYWxsQWN0aW9uc0luY2x1ZGVk9QAAAMhqdW1iAAAAQGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaGFzaC5kYXRhAAAAABhjMnNoC/CwD2wQ9CT+0/48QDum+QAAAIBjYm9ypWNhbGdmc2hhMjU2Y3BhZE4AAAAAAAAAAAAAAAAAAGRoYXNoWCDSJyJs6YWrCujKIVIpInL3y/llhyc7bAvsOhuCFt8S72RuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBRmbGVuZ3RoGRaLAAACPmp1bWIAAAAnanVtZGMyY2wAEQAQgAAAqgA4m3EDYzJwYS5jbGFpbS52MgAAAAIPY2JvcqVjYWxnZnNoYTI1NmlzaWduYXR1cmV4TXNlbGYjanVtYmY9L2MycGEvdXJuOmMycGE6NmNlMjYzZWMtNDU0OS00NWRmLThmZTktZjU3ZjM1N2FiNDdlL2MycGEuc2lnbmF0dXJlamluc3RhbmNlSUR4LHhtcDppaWQ6YTYxMzM3OWYtMjJiNS00YWUxLWFjM2QtYTUwMzRlZDZhNDY2cmNyZWF0ZWRfYXNzZXJ0aW9uc4OiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYILbQTSUsIzZphQtOAV7QkSNznftKKj5nUsWEGTZfaRdoomN1cmx4KnNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuYWN0aW9ucy52MmRoYXNoWCBkF19a5/uhbOi9yw9d5SDsQpsaPRaYm1k47CU2iqkxD6JjdXJseClzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmhhc2guZGF0YWRoYXNoWCCBBmmQB2GXR1L72f/yMI0XIp7nQYk/r2Ny1i+jwp+dXXRjbGFpbV9nZW5lcmF0b3JfaW5mb6NkbmFtZW9BbnRocm9waWMgRmlsZXNndmVyc2lvbmUxLjAuMGtzcGVjVmVyc2lvbmUyLjQuMAAAEDhqdW1iAAAAKGp1bWRjMmNzABEAEIAAAKoAOJtxA2MycGEuc2lnbmF0dXJlAAAAEAhjYm9y0oRZAhKiASYYIVkCCjCCAgYwggGNoAMCAQICFEDloAruwjnQvriD+gZCBT1nVRMAMAoGCCqGSM49BAMDMEkxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMS4wLAYDVQQDEyVBbnRocm9waWMgQ29udGVudCBDcmVkZW50aWFscyBSb290IENBMB4XDTI2MDgwNzE4NDM1NloXDTI4MDgwNjE5NDM1NlowRDEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxKTAnBgNVBAMTIEFudGhyb3BpYyBDbGF1ZGUgQ29udGVudCBTaWduaW5nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEmHoKa8tQGAUU1TS9QqU5W0Tp2N3XsvlK7BfQt6YWKwEzd2R3/dzKPEUDdCjlLjp9fT+KFjRVnuZ9v0oXvTe3k6NYMFYwDgYDVR0PAQH/BAQDAgeAMBUGA1UdJQQOMAwGCisGAQQBg+heAgEwDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBTOUeIEgU5kWyP448TPmj6cwddcwjAKBggqhkjOPQQDAwNnADBkAjAxcx0UngF60stVjs5G4T2eiptsBk5mf9oCtfJPAUBl8qs/PEXa8+gk1/X5QJ2DVcYCMHBfXN31YapiSqYvlIWrDVDJKOvXMl+kkz37Wt0PBI8sw486Mq6JeOhT+lRR4b1HCaFjcGFkWQ2eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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",
+  ats: {
+    en: {docx: "goncalo-moreira-neves_cv-ats_ag_09102026-eng.docx", pdf: "goncalo-moreira-neves_cv-ats_ag_09102026-eng.pdf"},
+    pt: {docx: "goncalo-moreira-neves_cv-ats_ag_09102026-pt.docx", pdf: "goncalo-moreira-neves_cv-ats_ag_09102026-pt.pdf"}
+  }
+};
+
+const CV = {};
+
+CV.en = {
+  docTitle: "Gonçalo Moreira Neves - CV",
+  tagline: "Shaping culture and driving economic growth in Agri-Food Tech",
+  roleline: "Agri-Food Tech",
+  ui: {dark: "Dark", light: "Light", print: "Print", atsWord: "ATS Word", atsPdf: "ATS PDF"},
+  h: {results: "Key achievements", caps: "Core skills", edu: "Education", certs: "Certifications", pubs: "Publications", members: "Memberships", langs: "Languages", profile: "Profile", exp: "Professional experience"},
+  contact: [
+    {t: "Lisbon, Portugal"},
+    {t: "+351 962 695 021", href: "tel:+351962695021"},
+    {t: "goncalocsmn@gmail.com", href: "mailto:goncalocsmn@gmail.com"},
+    {t: "linkedin.com/in/moreiraneves", href: "https://www.linkedin.com/in/moreiraneves"},
+    {t: "Online CV", href: "https://goncalocsmn.github.io/goncalo-moreira-neves_cv_ag/"},
+    {t: "Book a call", href: "https://calendar.app.google/yEnoiSdSKdpHQAzKA"}
+  ],
+  profile: [
+    "Horticultural lighting and CEA executive with 15+ years spanning photobiology research, LED product design, commercial leadership, and C-suite operations across Europe, Asia, and North America. Since August 2026, Managing Partner of APTA Advisory, an independent due diligence and business strategy firm for CEA and horticulture. An engineer at the core and a commercial leader in practice, with a proven record in value creation, capital raising, strategic partnerships, and technology integration.",
+    "Joined Lumatek Group (Lumatek and Photontek) as co-CEO with a commercial transformation and growth mandate: restructured operations, created two new customer segments, grew a key segment 210% in 2025 and lifted it to a 4x 2025 run-rate in Q1 2026, made the business data-driven, and left it growing and commercially self-sustaining. Previously grew Valoya from its first deal to €10M+ across 50+ countries; co-founded and exited Spectron Light Science (acquired in 14 months); contributed to Infarm's Series D (€200M, €1B+ valuation) and IGS's Series B (€50M, €200M+ valuation); and opened €20M+ in new revenue at IGS.",
+    "Published researcher in horticultural lighting (Burleigh Dodds, 2023). Member of the International Society for Horticultural Science. MSc in Illumination Engineering, Aalto University. Wageningen-certified in greenhouse and vertical farm lighting."
+  ],
+  wins: [
+    ["Transformation &amp; growth", "Lumatek Group: restructured, repositioned and grown; left growing and commercially self-sustaining"],
+    ["Segment scale-up", "Key segment +210% in 2025, then a 4x 2025 run-rate in Q1 2026 at Lumatek Group"],
+    ["2 new segments", "Created at Lumatek Group; expanded the addressable market"],
+    ["~60% cost cut", "Business cost-reduction strategy at Lumatek Group, with CFO, COO and CPO"],
+    ["€0 to €10M+", "Valoya: first deal to scale across 50+ countries"],
+    ["€20M+ new revenue", "IGS: two new revenue streams opened"],
+    ["Company exit", "Co-founded Spectron Light Science; acquired in 14 months"],
+    ["Series D contribution", "Infarm: €200M raised, €1B+ valuation"],
+    ["Series B contribution", "IGS: €50M raised, €200M+ valuation"],
+    ["+73% output / m²", "Infarm: technique and space optimisation"],
+    ["-40% energy / plant", "Infarm: new HVAC design"]
+  ],
+  skills: [
+    ["Leadership &amp; strategy", ["Executive Leadership (CEO / co-CEO)", "Interim C-Suite", "Transformation &amp; Change", "Organisational Restructuring", "Culture Change", "P&amp;L Ownership", "Capital Raising", "Board &amp; Investor Relations"]],
+    ["Commercial &amp; growth", ["Business Development", "Go-to-Market", "Strategic Partnerships", "Distribution &amp; Channels", "Pricing Strategy", "Market Expansion", "Customer Segmentation", "Key Account Growth", "Negotiation"]],
+    ["Technical &amp; product (CEA / lighting)", ["Horticultural LED Lighting", "Spectrum / PPFD / DLI", "Photobiology", "Controlled Environment Agriculture", "Vertical Farming", "Greenhouse Technology", "Hardware Product Development", "Illumination &amp; Electrical Engineering", "HVAC (CEA)", "IoT, Automation &amp; Robotics"]],
+    ["AI, data &amp; tools", ["Generative AI for Business", "ChatGPT", "Perplexity", "Data-Driven Decision-Making", "BI &amp; Analytics (Tableau)", "ERP Systems", "CRM (HubSpot, Salesforce)", "Project Management (JIRA, Asana, Monday, Confluence)", "Agile / SAFe / Flight Levels / Kanban", "Microsoft 365", "Google Workspace"]]
+  ],
+  jobs: [
+    {title: "Managing Partner", co: "APTA Advisory", meta: "Aug 2026 - Present · Lisbon, PT",
+     desc: "Independent due diligence and business strategy firm for controlled-environment agriculture and horticulture (medical cannabis, floriculture, horticulture).",
+     b: ["Lead the firm and its service model: <b>CapEx and OpEx due diligence</b> for buyers of lighting, climate and automation systems, and business strategy for technology suppliers",
+         "Advise shareholders and boards, procurement and operations teams, and business leaders on investment cases, supplier selection, unit economics and value creation",
+         "Designed an <b>outcome-linked fee model</b> (share of verified savings, or fixed fee) that ties advisory fees to measured results",
+         "Own go-to-market, pricing and partnerships; build the firm with partners and specialist contractors"]},
+    {title: "co-CEO | Interim Chief of Sales &amp; Marketing", co: "Lumatek Group", meta: "Dec 2024 - Jul 2026 · Lisbon, PT",
+     desc: "Led the commercial transformation and growth of Lumatek Group, a 20-year horticultural lighting manufacturer (HID and LED) with two brands, Lumatek and Photontek, and owned sales and marketing as interim CSO/CMO.",
+     b: ["Delivered a full commercial and cultural restructure: resized teams, closed underperforming markets, and opened new geographies and distribution channels",
+         "<b>Created two new customer segments</b>, expanding the addressable market beyond legacy channels",
+         "<b>Implemented a business cost-reduction strategy that cut overall costs by ~60%</b>, partnering with the CFO, COO and CPO",
+         "<b>After growing the segment 210% in 2025, we reached a 4x 2025 run-rate in Q1 2026</b>, through targeted development and a repositioned product offer",
+         "Transformed the business into a <b>data-driven organisation</b> and unified the commercial culture by breaking down internal silos between teams",
+         "Supported the product development roadmap, bridging R&amp;D and commercial requirements with a deep engineering background",
+         "Left the business growing, commercially self-sustaining, and positioned for its next chapter"]},
+    {title: "Independent Consultant", co: "Gonçalo Neves Consulting", meta: "Apr 2024 - Aug 2026 · Lisbon, PT",
+     desc: "Strategic and technical advisory to investors and operators in Agri-Food Tech and CEA (client details under NDA).",
+     b: ["Conducted technical due diligence on CEA companies, products, and technology platforms for investment decisions",
+         "Delivered competitive market analyses: technology trends, regulatory landscape, market share, and consumer preferences",
+         "Developed and implemented value-creation frameworks and KPI benchmarks for startups and scale-ups",
+         "Advised on go-to-market strategy, pricing, and commercial team structure; delivered workshops and training on Agri-Food Tech"]},
+    {title: "VP Business Development &amp; Head of AgriTech Partnerships", co: "IGS (Intelligent Growth Solutions)", meta: "Aug 2021 - Jul 2024 · Edinburgh / Amsterdam",
+     desc: "Award-winning vertical farming technology company; IoT-enabled and AI-driven, built on six families of patents (IGS shareholder).",
+     b: ["<b>Contributed to raising Series B at €50M</b>, achieving a €200M+ company valuation",
+         "Decreased product OpEx by up to 40% and CapEx/m² by up to 15% through partnership and process integration",
+         "<b>Opened two new revenue streams generating €20M+</b> (vertical-farming/greenhouse hybrid; young-plant producers and seed/breeding)",
+         "Closed strategic partnerships with Schneider Electric, Viscon Group, Microsoft, Plant Lighting, and Wageningen University &amp; Research",
+         "Built and led the business development team; ran teams for lean business-case development, IP acquisition, and partnerships; reported to the CEO and COO"]},
+    {title: "Director of Farm Hardware", co: "Infarm", meta: "Mar 2020 - Mar 2021 · Berlin, DE",
+     desc: "Hardware leadership at one of Europe's highest-profile vertical farming scale-ups.",
+     b: ["<b>40% energy cost reduction per plant</b> via a new HVAC design; <b>61% rent cost reduction per m²</b> through technology integration; <b>+73% output per m²</b> via new growing techniques and space optimisation",
+         "<b>Contributed to raising Series D at €200M, €1B+ valuation</b>",
+         "Grew the team from ~40 to 100 people in one year; drove an <b>83% labour cost reduction per plant</b> through automation and new process workflow",
+         "Created cross-functional teams (crops, hardware, software, digital PM) and led the move to SAFe, Agile, Kanban and Flight Levels; migrated hardware management to JIRA"]},
+    {title: "Entrepreneurial Experience", co: "Amsterdam, Netherlands", meta: "Jun 2016 - Jan 2020",
+     desc: "Founded and led five ventures across AgriTech innovation, lighting design and manufacture, consultancy, and education.", b: [],
+     v: [["Founder &amp; CEO", "Spectron Light Science", "Nov 2016 - Dec 2017", "Designed and manufactured three horticultural LED product lines for vertical farming; the company was acquired by a major horticultural industry player."],
+         ["Founder &amp; CTO", "OneFarm BV", "Jan 2017 - Jan 2020", "Led technology strategy and product for large-scale vertical farm rollouts; raised a seed round (€1M, €5M+ valuation) and assisted in raising a Series A (€9M, €36M+ valuation)."],
+         ["Founder &amp; CEO", "BemStudio", "Jun 2016 - May 2020", "Built and ran a Dutch engineering and business-consulting practice serving AgTech and CEA clients."],
+         ["Director", "A Lab Vertical Farm", "Jun 2017 - Dec 2019", "Ran a community vertical farm and trained ~50 volunteers in controlled-environment agriculture and sustainable growing systems."],
+         ["Guest Lecturer", "Breitner Academie", "Mar 2017 - Jun 2017", "Taught urban farming and food-technology innovation in the Technology Lab, combining theory with hands-on rapid prototyping."]]},
+    {title: "Director of Business Development", co: "Valoya", meta: "Jun 2011 - May 2016 · Helsinki, FI / NL",
+     desc: "Leading photobiology-driven LED grow-light company. Rose through three roles over five years: Technical Manager, then Solution Manager, then Director of Business Development (joined as a minority shareholder).",
+     b: ["<b>Closed the company's first commercial deal (€300,000+) and grew revenue from €0 to €10M+</b>",
+         "Developed and brought the company's first product lines to market",
+         "<b>Expanded to 50+ countries</b> across Europe, Southeast Asia, Japan, and North America; opened the Amsterdam office",
+         "Closed distribution partnerships in Japan and North America and managed distributor relations",
+         "Identified new revenue streams (seed/breeding, research), repositioning on photobiology capability rather than raw efficiency metrics"]},
+    {title: "Researcher", co: "Aalto University", meta: "Apr 2009 - May 2011 · Helsinki, FI", desc: "",
+     b: ["Researched horticultural lighting, vertical farming, and solid-state lighting: usage and control of LEDs, and the application of LEDs in plant cultivation",
+         "Projects: SSHLighting, Solid-State Horticulture Lighting (2009-2011); LEDFlowers, LED Luminaire for Plant Cultivation (2008-2011)"]}
+  ],
+  edu: [
+    ["M.Sc.(Tech.) Electrical Engineering", "Illumination Engineering &amp; Electrical Building Services, Aalto University, Finland (2010-2012)"],
+    ["M.Sc.(Minor) International Design Business Management", "Aalto University, Finland (2011-2012)"],
+    ["B.Sc.(Tech.) Electromechanical Engineering", "Universidade da Beira Interior, Portugal (2004-2009)"],
+    ["B.Sc. Erasmus Exchange, Electromechanical Engineering", "Teknillinen korkeakoulu (now Aalto), Finland (2009)"]
+  ],
+  certs: ["Lighting in Greenhouses &amp; Vertical Farms, Wageningen University &amp; Research (2018)", "Leading SAFe, Gladwell Academy", "Agile for Hardware, Gladwell Academy", "Flight Levels, Flight Levels Academy", "Product Development Project, Design Factory, Aalto University", "Mental Health First Aider, Worksafe (UK) Ltd"],
+  pubs: [
+    ["<b>Advances in Plant Factories: New Technologies in Indoor Vertical Farming</b> (Part 6, Ch. 20), Burleigh Dodds Science Publishing, Eds. Dr Toyoki Kozai &amp; Dr Eri Hayashi", "Co-Author · 2023"],
+    ["<b>Lighting Units and Measurements in Plant Cultivation</b>, Aalto University", "Author · 2014"],
+    ["<b>Valotusta tarpeen mukaan</b>, real-time dynamic lighting in cultivation, Int'l Review of Civil Engineering", "Co-Author · 2011"]
+  ],
+  members: ["Member, International Society for Horticultural Science (ISHS); contributing to standard units and measurements for horticultural lighting"],
+  langs: [["Portuguese", "Native"], ["English", "Full professional"], ["Spanish", "Advanced"], ["French", "Basic"], ["Finnish", "Beginner"]],
+  foot: "Gonçalo Moreira Neves · Agri-Food Tech · Updated October 2026"
+};
+
+CV.pt = {
+  docTitle: "Gonçalo Moreira Neves - CV",
+  tagline: "A moldar a cultura e a impulsionar o crescimento económico no Agri-Food Tech",
+  roleline: "Agri-Food Tech",
+  ui: {dark: "Escuro", light: "Claro", print: "Imprimir", atsWord: "Word ATS", atsPdf: "PDF ATS"},
+  h: {results: "Principais resultados", caps: "Competências", edu: "Formação académica", certs: "Certificações", pubs: "Publicações", members: "Associações", langs: "Línguas", profile: "Perfil", exp: "Experiência profissional"},
+  contact: [
+    {t: "Lisboa, Portugal"},
+    {t: "+351 962 695 021", href: "tel:+351962695021"},
+    {t: "goncalocsmn@gmail.com", href: "mailto:goncalocsmn@gmail.com"},
+    {t: "linkedin.com/in/moreiraneves", href: "https://www.linkedin.com/in/moreiraneves"},
+    {t: "CV online", href: "https://goncalocsmn.github.io/goncalo-moreira-neves_cv_ag/"},
+    {t: "Marcar reunião", href: "https://calendar.app.google/yEnoiSdSKdpHQAzKA"}
+  ],
+  profile: [
+    "Executivo em iluminação hortícola e agricultura em ambiente controlado (CEA), com mais de 15 anos de experiência entre investigação em fotobiologia, design de produtos LED, liderança comercial e gestão de topo na Europa, Ásia e América do Norte. Desde agosto de 2026, Managing Partner da APTA Advisory, consultora independente de due diligence e estratégia de negócio para CEA e horticultura. Engenheiro de base e líder comercial na prática, com historial comprovado em criação de valor, captação de capital, parcerias estratégicas e integração tecnológica.",
+    "Entrou no Lumatek Group (Lumatek e Photontek) como co-CEO com um mandato de transformação comercial e crescimento: reestruturou as operações, criou dois novos segmentos de clientes, fez crescer um segmento-chave 210% em 2025 e elevou-o a um ritmo de 4x o de 2025 no 1.º trimestre de 2026, tornou o negócio orientado por dados e deixou-o a crescer e comercialmente autossustentável. Anteriormente, fez crescer a Valoya do primeiro contrato até mais de €10M em mais de 50 países; cofundou e vendeu a Spectron Light Science (adquirida em 14 meses); contribuiu para a Série D da Infarm (€200M, avaliação superior a €1B) e para a Série B da IGS (€50M, avaliação superior a €200M); e abriu mais de €20M em nova receita na IGS.",
+    "Investigador publicado em iluminação hortícola (Burleigh Dodds, 2023). Membro da International Society for Horticultural Science. Mestre em Engenharia de Iluminação pela Universidade Aalto. Certificado pela Wageningen em iluminação de estufas e vertical farms."
+  ],
+  wins: [
+    ["Transformação e crescimento", "Lumatek Group: reestruturado, reposicionado e em crescimento; deixado a crescer e comercialmente autossustentável"],
+    ["Escala de segmento", "Segmento-chave +210% em 2025 e ritmo de 4x o de 2025 no 1.º trimestre de 2026, no Lumatek Group"],
+    ["2 novos segmentos", "Criados no Lumatek Group; mercado endereçável alargado"],
+    ["Custos ~60% mais baixos", "Estratégia de redução de custos no Lumatek Group, com o CFO, COO e CPO"],
+    ["De €0 a mais de €10M", "Valoya: do primeiro contrato à escala em mais de 50 países"],
+    ["Mais de €20M em nova receita", "IGS: duas novas fontes de receita abertas"],
+    ["Venda de empresa", "Cofundou a Spectron Light Science; adquirida em 14 meses"],
+    ["Contributo para a Série D", "Infarm: €200M captados, avaliação superior a €1B"],
+    ["Contributo para a Série B", "IGS: €50M captados, avaliação superior a €200M"],
+    ["+73% produção / m²", "Infarm: otimização de técnicas e de espaço"],
+    ["-40% energia / planta", "Infarm: novo projeto de AVAC"]
+  ],
+  skills: [
+    ["Liderança e estratégia", ["Liderança executiva (CEO / co-CEO)", "Gestão de topo interina", "Transformação e mudança", "Reestruturação organizacional", "Mudança cultural", "Responsabilidade por P&amp;L", "Captação de capital", "Relação com conselho e investidores"]],
+    ["Comercial e crescimento", ["Desenvolvimento de negócio", "Go-to-market", "Parcerias estratégicas", "Distribuição e canais", "Estratégia de preços", "Expansão de mercado", "Segmentação de clientes", "Crescimento de grandes contas", "Negociação"]],
+    ["Técnico e produto (CEA / iluminação)", ["Iluminação LED hortícola", "Espectro / PPFD / DLI", "Fotobiologia", "Agricultura em ambiente controlado", "Vertical farming", "Tecnologia de estufas", "Desenvolvimento de produto hardware", "Engenharia eletrotécnica e de iluminação", "AVAC (CEA)", "IoT, automação e robótica"]],
+    ["IA, dados e ferramentas", ["IA generativa para negócio", "ChatGPT", "Perplexity", "Decisão orientada por dados", "BI e análise de dados (Tableau)", "Sistemas ERP", "CRM (HubSpot, Salesforce)", "Gestão de projetos (JIRA, Asana, Monday, Confluence)", "Agile / SAFe / Flight Levels / Kanban", "Microsoft 365", "Google Workspace"]]
+  ],
+  jobs: [
+    {title: "Managing Partner", co: "APTA Advisory", meta: "ago 2026 - atual · Lisboa, PT",
+     desc: "Consultora independente de due diligence e estratégia de negócio para agricultura em ambiente controlado e horticultura (canábis medicinal, floricultura, horticultura).",
+     b: ["Lidero a empresa e o seu modelo de serviço: <b>due diligence de CapEx e OpEx</b> para compradores de sistemas de iluminação, clima e automação, e estratégia de negócio para fornecedores de tecnologia",
+         "Aconselho acionistas e conselhos de administração, equipas de compras e operações e líderes de negócio sobre casos de investimento, seleção de fornecedores, economia unitária e criação de valor",
+         "Concebi um <b>modelo de honorários indexado a resultados</b> (percentagem das poupanças verificadas, ou valor fixo) que liga os honorários a resultados medidos",
+         "Responsável pelo go-to-market, preços e parcerias; construo a empresa com parceiros e especialistas subcontratados"]},
+    {title: "co-CEO | Diretor Comercial e de Marketing interino", co: "Lumatek Group", meta: "dez 2024 - jul 2026 · Lisboa, PT",
+     desc: "Liderou a transformação comercial e o crescimento do Lumatek Group, fabricante de iluminação hortícola (HID e LED) com 20 anos e duas marcas, Lumatek e Photontek, e assumiu vendas e marketing como CSO/CMO interino.",
+     b: ["Concretizou uma reestruturação comercial e cultural completa: redimensionou equipas, encerrou mercados com fraco desempenho e abriu novas geografias e canais de distribuição",
+         "<b>Criou dois novos segmentos de clientes</b>, alargando o mercado endereçável para além dos canais tradicionais",
+         "<b>Implementou uma estratégia de redução de custos que cortou os custos globais em ~60%</b>, em parceria com o CFO, COO e CPO",
+         "<b>Depois de fazer crescer o segmento 210% em 2025, atingimos um ritmo de 4x o de 2025 no 1.º trimestre de 2026</b>, através de desenvolvimento dirigido e de uma oferta de produto reposicionada",
+         "Transformou o negócio numa <b>organização orientada por dados</b> e unificou a cultura comercial, eliminando silos internos entre equipas",
+         "Apoiou o roadmap de desenvolvimento de produto, ligando requisitos de I&amp;D e comerciais com uma sólida formação em engenharia",
+         "Deixou o negócio a crescer, comercialmente autossustentável e preparado para o próximo capítulo"]},
+    {title: "Consultor independente", co: "Gonçalo Neves Consulting", meta: "abr 2024 - ago 2026 · Lisboa, PT",
+     desc: "Consultoria estratégica e técnica a investidores e operadores em Agri-Food Tech e CEA (clientes sob NDA).",
+     b: ["Realizou due diligence técnica a empresas, produtos e plataformas tecnológicas de CEA para decisões de investimento",
+         "Produziu análises de mercado competitivas: tendências tecnológicas, enquadramento regulamentar, quota de mercado e preferências dos consumidores",
+         "Desenvolveu e implementou modelos de criação de valor e benchmarks de KPI para startups e scale-ups",
+         "Aconselhou sobre estratégia de go-to-market, preços e estrutura da equipa comercial; deu workshops e formação em Agri-Food Tech"]},
+    {title: "VP de Desenvolvimento de Negócio e Head of AgriTech Partnerships", co: "IGS (Intelligent Growth Solutions)", meta: "ago 2021 - jul 2024 · Edimburgo / Amesterdão",
+     desc: "Empresa premiada de tecnologia de vertical farming; com IoT e IA, assente em seis famílias de patentes (acionista da IGS).",
+     b: ["<b>Contribuiu para a captação da Série B de €50M</b>, com uma avaliação da empresa superior a €200M",
+         "Reduziu o OpEx do produto até 40% e o CapEx/m² até 15% através de parcerias e integração de processos",
+         "<b>Abriu duas novas fontes de receita que geraram mais de €20M</b> (híbrido vertical farming/estufa; produtores de plantas jovens e sementes/melhoramento)",
+         "Fechou parcerias estratégicas com a Schneider Electric, Viscon Group, Microsoft, Plant Lighting e Wageningen University &amp; Research",
+         "Criou e liderou a equipa de desenvolvimento de negócio; geriu equipas de business cases lean, aquisição de PI e parcerias; reportava ao CEO e ao COO"]},
+    {title: "Director of Farm Hardware", co: "Infarm", meta: "mar 2020 - mar 2021 · Berlim, DE",
+     desc: "Liderança de hardware numa das scale-ups de vertical farming mais conhecidas da Europa.",
+     b: ["<b>Redução de 40% no custo energético por planta</b> com um novo projeto de AVAC; <b>redução de 61% no custo de renda por m²</b> através da integração tecnológica; <b>+73% de produção por m²</b> com novas técnicas de cultivo e otimização do espaço",
+         "<b>Contribuiu para a captação da Série D de €200M, com avaliação superior a €1B</b>",
+         "Fez crescer a equipa de ~40 para 100 pessoas num ano; conseguiu uma <b>redução de 83% no custo de mão de obra por planta</b> através de automação e de um novo fluxo de processos",
+         "Criou equipas multidisciplinares (culturas, hardware, software, gestão de produto digital) e liderou a adoção de SAFe, Agile, Kanban e Flight Levels; migrou a gestão de hardware para o JIRA"]},
+    {title: "Experiência empreendedora", co: "Amesterdão, Países Baixos", meta: "jun 2016 - jan 2020",
+     desc: "Fundou e liderou cinco empresas em inovação AgriTech, design e fabrico de iluminação, consultoria e educação.", b: [],
+     v: [["Fundador e CEO", "Spectron Light Science", "nov 2016 - dez 2017", "Concebeu e fabricou três linhas de produtos LED hortícolas para vertical farming; a empresa foi adquirida por um dos principais operadores do setor hortícola."],
+         ["Fundador e CTO", "OneFarm BV", "jan 2017 - jan 2020", "Liderou a estratégia tecnológica e o produto para implementações de vertical farms em grande escala; captou uma ronda seed (€1M, avaliação superior a €5M) e apoiou a captação de uma Série A (€9M, avaliação superior a €36M)."],
+         ["Fundador e CEO", "BemStudio", "jun 2016 - mai 2020", "Criou e geriu uma consultora neerlandesa de engenharia e negócio para clientes de AgTech e CEA."],
+         ["Diretor", "A Lab Vertical Farm", "jun 2017 - dez 2019", "Geriu uma vertical farm comunitária e formou ~50 voluntários em agricultura em ambiente controlado e sistemas de cultivo sustentáveis."],
+         ["Professor convidado", "Breitner Academie", "mar 2017 - jun 2017", "Ensinou agricultura urbana e inovação em tecnologia alimentar no Technology Lab, juntando teoria e prototipagem rápida prática."]]},
+    {title: "Diretor de Desenvolvimento de Negócio", co: "Valoya", meta: "jun 2011 - mai 2016 · Helsínquia, FI / NL",
+     desc: "Empresa de referência em iluminação LED de cultivo baseada em fotobiologia. Progrediu em três funções ao longo de cinco anos: Technical Manager, Solution Manager e Diretor de Desenvolvimento de Negócio (entrou como acionista minoritário).",
+     b: ["<b>Fechou o primeiro contrato comercial da empresa (mais de €300.000) e fez crescer a receita de €0 para mais de €10M</b>",
+         "Desenvolveu e lançou no mercado as primeiras linhas de produto da empresa",
+         "<b>Expandiu para mais de 50 países</b> na Europa, Sudeste Asiático, Japão e América do Norte; abriu o escritório de Amesterdão",
+         "Fechou parcerias de distribuição no Japão e na América do Norte e geriu a relação com os distribuidores",
+         "Identificou novas fontes de receita (sementes/melhoramento, investigação), reposicionando a empresa na capacidade em fotobiologia e não em métricas de eficiência pura"]},
+    {title: "Investigador", co: "Universidade Aalto", meta: "abr 2009 - mai 2011 · Helsínquia, FI", desc: "",
+     b: ["Investigou iluminação hortícola, vertical farming e iluminação de estado sólido: utilização e controlo de LED e aplicação de LED no cultivo de plantas",
+         "Projetos: SSHLighting, Solid-State Horticulture Lighting (2009-2011); LEDFlowers, LED Luminaire for Plant Cultivation (2008-2011)"]}
+  ],
+  edu: [
+    ["Mestrado (M.Sc.Tech.) em Engenharia Eletrotécnica", "Engenharia de Iluminação e Instalações Elétricas em Edifícios, Universidade Aalto, Finlândia (2010-2012)"],
+    ["Minor de mestrado em International Design Business Management", "Universidade Aalto, Finlândia (2011-2012)"],
+    ["Licenciatura em Engenharia Eletromecânica", "Universidade da Beira Interior, Portugal (2004-2009)"],
+    ["Intercâmbio Erasmus, Engenharia Eletromecânica", "Teknillinen korkeakoulu (atual Aalto), Finlândia (2009)"]
+  ],
+  certs: ["Lighting in Greenhouses &amp; Vertical Farms, Wageningen University &amp; Research (2018)", "Leading SAFe, Gladwell Academy", "Agile for Hardware, Gladwell Academy", "Flight Levels, Flight Levels Academy", "Product Development Project, Design Factory, Universidade Aalto", "Mental Health First Aider, Worksafe (UK) Ltd"],
+  pubs: [
+    ["<b>Advances in Plant Factories: New Technologies in Indoor Vertical Farming</b> (Parte 6, Cap. 20), Burleigh Dodds Science Publishing, eds. Dr. Toyoki Kozai e Dra. Eri Hayashi", "Coautor · 2023"],
+    ["<b>Lighting Units and Measurements in Plant Cultivation</b>, Universidade Aalto", "Autor · 2014"],
+    ["<b>Valotusta tarpeen mukaan</b>, iluminação dinâmica em tempo real no cultivo, Int'l Review of Civil Engineering", "Coautor · 2011"]
+  ],
+  members: ["Membro da International Society for Horticultural Science (ISHS); contribui para a normalização de unidades e medições em iluminação hortícola"],
+  langs: [["Português", "Nativo"], ["Inglês", "Profissional completo"], ["Espanhol", "Avançado"], ["Francês", "Básico"], ["Finlandês", "Iniciante"]],
+  foot: "Gonçalo Moreira Neves · Agri-Food Tech · Atualizado em outubro de 2026"
+};
+
+
+const LABELS = {en:"EN", pt:"PT", es:"ES", fr:"FR"};
+const LANGS = Object.keys(CV);
+const $ = id => document.getElementById(id);
+const SUN = '<svg viewBox="0 0 24 24"><path d="M12 17a5 5 0 100-10 5 5 0 000 10zm0 2a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm0-18a1 1 0 011 1v2a1 1 0 11-2 0V2a1 1 0 011-1zm10 11a1 1 0 01-1 1h-2a1 1 0 110-2h2a1 1 0 011 1zM5 12a1 1 0 01-1 1H2a1 1 0 110-2h2a1 1 0 011 1z"/></svg>';
+const MOON = '<svg viewBox="0 0 24 24"><path d="M21.53 15.93A9 9 0 018.07 2.47a9.5 9.5 0 1013.46 13.46z"/></svg>';
+const PRINTER = '<svg viewBox="0 0 24 24"><path d="M7 3h10v4H7V3zm12 6H5a3 3 0 00-3 3v5h4v4h12v-4h4v-5a3 3 0 00-3-3zm-3 10H8v-5h8v5z"/></svg>';
+const DOWN = '<svg viewBox="0 0 24 24"><path d="M11 3h2v9.6l3.3-3.3 1.4 1.4L12 16.4l-5.7-5.7 1.4-1.4 3.3 3.3V3zM5 19h14v2H5v-2z"/></svg>';
+
+function initialLang(){
+  let q = "";
+  try { q = new URLSearchParams(location.search).get("lang") || ""; } catch(e) {}
+  return LANGS.indexOf(q) > -1 ? q : LANGS[0];
+}
+let state = { lang: initialLang(), theme: (document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light") };
+
+function setTheme(t){
+  state.theme = t;
+  document.documentElement.setAttribute("data-theme", t);
+  try { localStorage.setItem("cv-theme", t); } catch(e) {}
+  const u = CV[state.lang].ui;
+  $("themeBtn").innerHTML = (t === "light" ? MOON : SUN) + "<span>" + (t === "light" ? u.dark : u.light) + "</span>";
+  $("themeBtn").setAttribute("aria-label", t === "light" ? u.dark : u.light);
+}
+
+function list(id, items, fn){ $(id).innerHTML = (items || []).map(fn).join(""); }
+function toggle(id, items){ $(id).hidden = !(items && items.length); }
+
+function render(){
+  const d = CV[state.lang];
+  document.documentElement.lang = state.lang;
+  document.title = d.docTitle;
+  $("tagline").textContent = d.tagline;
+  $("roleline").innerHTML = d.roleline;
+  $("contact").innerHTML = d.contact.map(c => c.href
+    ? '<a href="' + c.href + '"' + (c.href.indexOf("http") === 0 ? ' target="_blank" rel="noopener"' : '') + '>' + c.t + '</a>'
+    : '<span>' + c.t + '</span>').join("");
+
+  ["results","caps","edu","certs","pubs","members","langs","profile","exp","inv"].forEach(k => { if ($("h-" + k)) $("h-" + k).textContent = d.h[k] || ""; });
+
+  $("profile").innerHTML = d.profile.map(p => "<p>" + p + "</p>").join("");
+  const winCard = w => '<div class="win"><b>' + w[0] + '</b><span>' + w[1] + '</span></div>';
+  if (d.pillars) {
+    $("wins").className = "pillars";
+    $("wins").innerHTML = d.pillars.map(p => '<div class="pillar"><h3>' + p.h + '</h3><div class="wins">' + p.w.map(winCard).join("") + '</div></div>').join("");
+  } else {
+    $("wins").className = "wins" + (d.wins.length > 9 ? " many" : "");
+    $("wins").innerHTML = d.wins.map(winCard).join("");
+  }
+  list("inv", d.inv, r => '<div class="inv"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'); toggle("s-inv", d.inv);
+  list("skills", d.skills, g => '<div class="skillgroup"><h3>' + g[0] + '</h3><div class="chips">' + g[1].map(s => "<span>" + s + "</span>").join("") + '</div></div>');
+  list("edu", d.edu, e => '<div class="edu"><b>' + e[0] + '</b><span>' + e[1] + '</span></div>');
+  list("certs", d.certs, c => "<li>" + c + "</li>"); toggle("s-certs", d.certs);
+  list("pubs", d.pubs, p => '<div class="pub">' + (typeof p === "string" ? p : p[0] + '<span>' + p[1] + '</span>') + '</div>'); toggle("s-pubs", d.pubs);
+  list("members", d.members, m => "<li>" + m + "</li>"); toggle("s-members", d.members);
+  list("langlist", d.langs, l => '<div class="lang"><b style="font-weight:600">' + l[0] + '</b><span>' + l[1] + '</span></div>');
+
+  $("jobs").innerHTML = d.jobs.map(j => {
+    let h = '<div class="job"><div class="top"><div class="title">' + j.title + (j.co ? ' · <span class="co">' + j.co + '</span>' : '') + '</div><div class="meta">' + j.meta + '</div></div>';
+    if (j.desc) h += '<div class="desc">' + j.desc + '</div>';
+    if (j.b && j.b.length) h += "<ul>" + j.b.map(x => "<li>" + x + "</li>").join("") + "</ul>";
+    if (j.v && j.v.length) h += '<div class="vent">' + j.v.map(v => '<div class="vrow"><div class="vtitle">' + v[0] + ' · <span class="co2">' + v[1] + '</span><span class="vmeta">' + v[2] + '</span></div><div class="vdesc">' + v[3] + '</div></div>').join("") + '</div>';
+    return h + "</div>";
+  }).join("");
+  const fl = d.contact.filter(c => c.href).map(c => '<a href="' + c.href + '"' + (c.href.indexOf("http") === 0 ? ' target="_blank" rel="noopener"' : '') + '>' + (c.href.indexOf("linkedin") > -1 ? "LinkedIn" : c.t) + '</a>');
+  const fparts = d.foot.split(" · ");
+  $("foot").innerHTML = '<div class="flinks">' + fl.join('<span class="fsep">·</span>') + '</div><div class="fdate">Gonçalo Moreira Neves · ' + fparts[fparts.length - 1] + '</div>';
+
+  const files = META.ats[state.lang] || META.ats[LANGS[0]];
+  $("atsDocx").href = files.docx; $("atsDocx").innerHTML = DOWN + "<span>" + d.ui.atsWord + "</span>";
+  $("atsPdf").href = files.pdf;   $("atsPdf").innerHTML  = DOWN + "<span>" + d.ui.atsPdf + "</span>";
+  $("printBtn").innerHTML = PRINTER + "<span>" + d.ui.print + "</span>";
+  $("printBtn").setAttribute("aria-label", d.ui.print);
+
+  const wrap = $("langs"); wrap.innerHTML = ""; wrap.hidden = LANGS.length < 2;
+  LANGS.forEach(code => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = LABELS[code] || code.toUpperCase();
+    b.setAttribute("aria-pressed", String(code === state.lang));
+    b.setAttribute("aria-label", LABELS[code] || code);
+    b.addEventListener("click", () => { state.lang = code; render(); });
+    wrap.appendChild(b);
+  });
+  setTheme(state.theme);
+  linkify();
+}
+
+/* Link the first mention of each organisation (META.links) in the body. */
+function linkify(){
+  const L = META.links || {};
+  const keys = Object.keys(L).sort((a, b) => b.length - a.length);
+  if (!keys.length) return;
+  const done = {};
+  const walker = document.createTreeWalker(document.querySelector(".body"), NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement.closest("a,h2,h3") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+  });
+  const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    for (const k of keys) {
+      if (done[k]) continue;
+      const i = node.nodeValue.indexOf(k);
+      if (i < 0) continue;
+      done[k] = true;
+      const rest = node.splitText(i); rest.splitText(k.length);
+      const a = document.createElement("a");
+      a.href = L[k]; a.target = "_blank"; a.rel = "noopener"; a.className = "org"; a.textContent = k;
+      rest.parentNode.replaceChild(a, rest);
+      return;
+    }
+  });
+}
+
+if (META.photo) { $("photo").src = META.photo; $("photo").hidden = false; $("mono").hidden = true; }
+$("themeBtn").addEventListener("click", () => setTheme(state.theme === "light" ? "dark" : "light"));
+$("printBtn").addEventListener("click", () => window.print());
+render();
+</script>
+</body>
+</html>
